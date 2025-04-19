@@ -1,0 +1,34 @@
+<h1>Webpage Performance Report Generator</h1>
+<form>
+    <button mat-button type="button" n (click)="openDialog()">+ Add New Data</button>
+</form>
+<mat-divider></mat-divider>
+<form class="report-form">
+    <mat-form-field>
+        <mat-label>Report Title:</mat-label>
+        <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Report Type:</mat-label>
+        <mat-select>
+            @for (insight of insights; track insight) {
+                <mat-option [value]="insight.value">{{insight.viewValue}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <div>
+        <mat-form-field>
+            <mat-label>Data to Graph:</mat-label>
+            <mat-select>
+                @for (report of reports; track report) {
+                    <mat-option [value]="report.value">{{report.viewValue}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <button mat-button type="button">Insert</button>
+    </div>
+    <div>
+        <button mat-button>Submit</button>
+        <button mat-button type="button">Clear</button>
+    </div>
+</form>

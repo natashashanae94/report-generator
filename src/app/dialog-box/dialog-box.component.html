@@ -1,0 +1,16 @@
+<div>Close</div>
+<h2>Get Performance Data</h2>
+<form>
+    <mat-form-field>
+        <mat-label>Data Name:</mat-label>
+        <input matInput type="text"/>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Website URL:</mat-label>
+        <input matInput #urlInput type="text"/>
+    </mat-form-field>
+    <div>
+        <button mat-button type="button" (click)="fetchPerformanceData(urlInput.value)">Get Performance Data</button>
+        <button mat-button type="button">Cancel</button>
+    </div>
+</form>
