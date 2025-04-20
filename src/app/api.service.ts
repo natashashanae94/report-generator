@@ -15,7 +15,7 @@ interface URL {
 
 export class ApiService {
 
-  private apiKey: string = environment.pagespeedAPIKEY;
+  private apiKey: string = environment.pagespeedAPIKey;
   private apiUrl: string = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
 
   constructor(private http: HttpClient) { }

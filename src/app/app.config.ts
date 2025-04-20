@@ -12,6 +12,6 @@ import { environment } from '../environments/environment';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), // Example: Configuring router providers
-    provideHttpClient(), provideFirebaseApp(() => initializeApp(environment.firebase));
+    provideHttpClient(), provideFirebaseApp(() => initializeApp(environment.firebase)),
   ]
 };

@@ -8,12 +8,12 @@
     "source": "dataconnect"
   },
   "hosting": {
-    "public": "public",
+    "public": "dist/reporter/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-  ],
+    ],
     "rewrites": [
       {
         "source": "**",
