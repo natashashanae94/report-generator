@@ -21,7 +21,7 @@ You can find more information about connectors in the [Data Connect documentatio
 
 ```typescript
 import { getDataConnect } from 'firebase/data-connect';
-***REMOVED***
+
 
 const dataConnect = getDataConnect(connectorConfig);
 ```
@@ -34,7 +34,7 @@ You can also follow the emulator instructions from the [Data Connect documentati
 
 ```typescript
 import { connectDataConnectEmulator, getDataConnect } from 'firebase/data-connect';
-***REMOVED***
+
 
 const dataConnect = getDataConnect(connectorConfig);
 connectDataConnectEmulator(dataConnect, 'localhost', 9399);

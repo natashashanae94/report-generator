@@ -12,7 +12,7 @@
     "src/main.ts",
     "src/main.server.ts",
     "src/server.ts"
-***REMOVED***
+]
   "include": [
     "src/**/*.d.ts"
   ]

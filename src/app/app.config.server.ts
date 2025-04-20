@@ -6,6 +6,6 @@ const serverConfig: ApplicationConfig = {
   providers: [
     provideServerRendering(),
   ]
-***REMOVED***
+}
 
 export const config = mergeApplicationConfig(appConfig, serverConfig);
