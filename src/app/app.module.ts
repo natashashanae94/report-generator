@@ -7,11 +7,11 @@ import { environment } from '../../src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent
-]
+],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase)
-]
+],
   providers: [],
   bootstrap: [AppComponent]
 })
