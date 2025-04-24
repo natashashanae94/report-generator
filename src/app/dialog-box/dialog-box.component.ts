@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Firestore, collection, collectionData, addDoc} from '@angular/fire/firestore';
 import { ApiService } from '../api.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+
 
 @Component({
   selector: 'app-dialog-box',

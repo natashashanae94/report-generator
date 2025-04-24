@@ -13,5 +13,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), // Example: Configuring router providers
     provideHttpClient(), provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()), 
   ]
 };
