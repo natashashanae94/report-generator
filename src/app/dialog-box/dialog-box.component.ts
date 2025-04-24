@@ -49,7 +49,7 @@ export class DialogBox {
         }
       },
       error: (err) => {
-        console.error('Error fetching PageSpeed data', error);
+        console.error('Error fetching PageSpeed data', err);
       }
     });
 }
