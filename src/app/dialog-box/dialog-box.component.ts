@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Firestore, collection, collectionData, addDoc } from '@angular/fire/firestore';
+import { Component } from '@angular/core';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { ApiService } from '../api.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -35,14 +35,15 @@ export class DialogBox {
 
           this.pageSpeedData = data;
 
-          console.log({
-            performanceData: pagespeedData,
-
-            //Uncomment this statement to see the whole request JSON from API
-            /* request: data*/
-          });
           const colRef = collection(this.firestore, 'posts');
-          const docRef = await addDoc(colRef, data);
+          const docRef = await addDoc(colRef, pagespeedData);
+          console.log('Document written with ID:', docRef.id);
+          // console.log({
+          //   performanceData: pagespeedData,
+
+          //   //Uncomment this statement to see the whole request JSON from API
+          //   /* request: data*/
+          // });
 
         } catch (error) {
           console.error('Firestore write error:', error);
