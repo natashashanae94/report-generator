@@ -2,12 +2,12 @@ import { Component, inject, OnInit} from '@angular/core';
 import {
   MatDialog,
 } from '@angular/material/dialog';
-import { collection, getDocs, Firestore } from "firebase/firestore";
+import { FirestoreService } from './services/firestore.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
-import {DialogBox} from './dialog-box/dialog-box.component'
+import {DialogBox} from './components/dialog-box/dialog-box.component'
 
 
 interface Insight {
@@ -28,11 +28,11 @@ interface Report {
   styleUrl: './app.component.scss',
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
+  constructor(private firestoreService: FirestoreService) {}
 
   postIds: string[] = [];
 
-  constructor(private firestore: Firestore) {}
 
   //Logic that triggers the dialog box for +Add New Data button.
   title = 'new-data-dialog';
@@ -41,12 +41,10 @@ export class AppComponent {
     this.dialog.open(DialogBox)
   }
 
-  //Calling firestore to retrieve document data
-  async ngOnInit() {
-    const usersCollection = collection(this.firestore, 'users');
-    const snapshot = await getDocs(usersCollection);
-
-    this.postIds = snapshot.docs.map(doc => doc.id)
+  ngOnInit(): void {
+    this.firestoreService.getAllDocs('posts').subscribe(data => {
+      this.postIds = data;
+    });            
   }
 
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
-import { ApiService } from '../api.service';
+import { FirestoreService } from '../../services/firestore.service';
+import { ApiService } from '../../services/api.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -14,9 +14,9 @@ import { MatInputModule } from '@angular/material/input';
 export class DialogBox {
 
   //Calling API
-  pageSpeedData: any;
+  pagespeedData: any;
 
-  constructor(private apiService: ApiService, private firestore: Firestore) { }
+  constructor(private apiService: ApiService, private firestoreService: FirestoreService) { }
 
   fetchPerformanceData(url: string): void {
     this.apiService.getPageSpeedData(url).subscribe({
@@ -33,11 +33,14 @@ export class DialogBox {
             speed: data.lighthouseResult.audits['speed-index'].displayValue,
           }
 
-          this.pageSpeedData = data;
+          this.pagespeedData = data;
 
-          const colRef = collection(this.firestore, 'posts');
-          const docRef = await addDoc(colRef, pagespeedData);
-          console.log('Document written with ID:', docRef.id);
+          /* Add data to firestore collection */
+
+          this.firestoreService.addDoc('posts', pagespeedData)
+            .then(() => console.log('Document added'));
+          
+          
           // console.log({
           //   performanceData: pagespeedData,
 
@@ -53,5 +56,5 @@ export class DialogBox {
         console.error('Error fetching PageSpeed data', err);
       }
     });
-}
+  }
 }
