@@ -14,7 +14,6 @@ interface URL {
 })
 
 export class ApiService {
-
   private apiKey: string = environment.pagespeedAPIKey;
   private apiUrl: string = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
 
@@ -28,5 +27,4 @@ export class ApiService {
     return this.http.get(this.apiUrl, { params });
     
   }
-
 }

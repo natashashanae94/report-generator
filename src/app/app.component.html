@@ -16,8 +16,8 @@
         <mat-form-field>
             <mat-label>Data to Graph:</mat-label>
             <mat-select>
-                @for (report of reports; track report) {
-                    <mat-option [value]="report.value">{{report.viewValue}}</mat-option>
+                @for (id of postIds; track id) {
+                    <mat-option [value]="id">{{ id }}</mat-option>
                 }
             </mat-select>
         </mat-form-field>

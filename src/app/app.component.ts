@@ -1,14 +1,8 @@
-import {ChangeDetectionStrategy, Component, inject, model, signal} from '@angular/core';
+import { Component, inject, OnInit} from '@angular/core';
 import {
-  MAT_DIALOG_DATA,
   MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
 } from '@angular/material/dialog';
-
+import { collection, getDocs, Firestore } from "firebase/firestore";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
@@ -36,12 +30,25 @@ interface Report {
 
 export class AppComponent {
 
+  postIds: string[] = [];
+
+  constructor(private firestore: Firestore) {}
+
   //Logic that triggers the dialog box for +Add New Data button.
   title = 'new-data-dialog';
   readonly dialog = inject(MatDialog);
   openDialog(): void{
     this.dialog.open(DialogBox)
   }
+
+  //Calling firestore to retrieve document data
+  async ngOnInit() {
+    const usersCollection = collection(this.firestore, 'users');
+    const snapshot = await getDocs(usersCollection);
+
+    this.postIds = snapshot.docs.map(doc => doc.id)
+  }
+
 
   //Example report type values for Select Dropdown component (I plan to replace these with API values).
   insights: Insight[] = [
