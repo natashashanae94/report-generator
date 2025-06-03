@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams} from '@angular/common/http';
 import { Observable} from 'rxjs';
-import { map } from 'rxjs/operators';
-import { environment } from '../environments/environment.development';
+import { environment } from '../../../src/environments/environment';
 
 
 interface URL {
@@ -14,7 +13,6 @@ interface URL {
 })
 
 export class ApiService {
-
   private apiKey: string = environment.pagespeedAPIKey;
   private apiUrl: string = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed';
 

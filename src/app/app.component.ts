@@ -1,19 +1,13 @@
-import {ChangeDetectionStrategy, Component, inject, model, signal} from '@angular/core';
+import { Component, inject, OnInit} from '@angular/core';
 import {
-  MAT_DIALOG_DATA,
   MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
 } from '@angular/material/dialog';
-
+import { FirestoreService } from './services/firestore.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
-import {DialogBox} from './dialog-box/dialog-box.component'
+import {DialogBox} from './components/dialog-box/dialog-box.component'
 
 
 interface Insight {
@@ -34,7 +28,11 @@ interface Report {
   styleUrl: './app.component.scss',
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
+  constructor(private firestoreService: FirestoreService) {}
+
+  postIds: string[] = [];
+
 
   //Logic that triggers the dialog box for +Add New Data button.
   title = 'new-data-dialog';
@@ -42,8 +40,6 @@ export class AppComponent {
   openDialog(): void{
     this.dialog.open(DialogBox)
   }
-
-  //Write a query here1   
  
   //Example report type values for Select Dropdown component (I plan to replace these with API values).
   insights: Insight[] = [
