@@ -1,8 +1,8 @@
 import { Component, inject, OnInit} from '@angular/core';
+import { ApiService } from './services/api.service';
 import {
   MatDialog,
 } from '@angular/material/dialog';
-import { FirestoreService } from './services/firestore.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
@@ -21,18 +21,19 @@ interface Report {
 }
 
 @Component({
-  standalone: true,
-  imports: [MatFormFieldModule, MatSelectModule,MatInputModule, MatDividerModule],
   selector: 'app-root',
+  standalone: true,
+  imports: [MatFormFieldModule, MatSelectModule, MatInputModule, MatDividerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 
-export class AppComponent implements OnInit{
-  constructor(private firestoreService: FirestoreService) {}
+export class AppComponent implements OnInit {
+  constructor(
+    private apiService: ApiService
+  ) {}
 
-  postIds: string[] = [];
-
+  websites: any[] = [];
 
   //Logic that triggers the dialog box for +Add New Data button.
   title = 'new-data-dialog';
@@ -41,25 +42,23 @@ export class AppComponent implements OnInit{
     this.dialog.open(DialogBox)
   }
  
-  //Example report type values for Select Dropdown component (I plan to replace these with API values).
   insights: Insight[] = [
-    // {value: 'lcp-0', viewValue: 'Largest Contentful Paint'},
-    // {value: 'fcp-1', viewValue: 'First Contentful Paint'},
-    // {value: 'cls-2', viewValue: 'Cumulative Layout Shift'},
-    // {value: 'performance-3', viewValue: 'Performance'},
-    // {value: 'accessibility-4', viewValue: 'Accessibility'},
-    // {value: 'best-practice-5', viewValue: 'Best Practice'},
-    // {value: 'seo-6', viewValue: 'SEO'},
-    // {value: 'speed-index-7', viewValue: 'Speed Index'},
-    // {value: 'tbt-8', viewValue: 'Total Blocking Time'},
-    // {value: 'transfer-size-9', viewValue: 'Page Transfer Size'},
-    // {value: 'num-requests-10', viewValue: 'Number of Requests'},
+    {value: 'LCP', viewValue: 'Largest Contentful Paint'},
+    {value: 'FCP', viewValue: 'First Contentful Paint'},
+    {value: 'CLS', viewValue: 'Cumulative Layout Shift'},
+    {value: 'Speed', viewValue: 'Speed Index'},
+    {value: 'TBT', viewValue: 'Total Blocking Time'},
   ];
 
-  //Example generated report values for Select Dropdown component (I plan to replace these with API values).
-  reports: Report[] = [
-    {value: 'consumer-lcp-desktop-before', viewValue: '3/15/23 @ 1:23PM EST Consumer - Contact http://www.penske.com/consumer/contact'},
-    {value: 'consumer-lcp-desktop-after', viewValue: '4/15/25 @ 2:50PM EST Consumer - Contact http://www.penske.com/consumer/contact'},
-  ];
+  ngOnInit() {
+    this.apiService.getWebsiteID().subscribe((data: any) => {
+      this.websites = data;
+    });
+  }
+
+  // reports: Report[] = [
+  //   {value: 'consumer-lcp-desktop-before', viewValue: '3/15/23 @ 1:23PM EST Consumer - Contact http://www.penske.com/consumer/contact'},
+  //   {value: 'consumer-lcp-desktop-after', viewValue: '4/15/25 @ 2:50PM EST Consumer - Contact http://www.penske.com/consumer/contact'},
+  // ];
 
 }

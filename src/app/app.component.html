@@ -16,9 +16,11 @@
         <mat-form-field>
             <mat-label>Data to Graph:</mat-label>
             <mat-select>
-                @for (id of postIds; track id) {
-                    <mat-option [value]="id">{{ id }}</mat-option>
-                }
+
+                <mat-option *ngFor="let website of websites" [value]="website.id">
+                    {{ website.id }}
+                </mat-option>
+
             </mat-select>
         </mat-form-field> 
         <button mat-button type="button">Insert</button>
