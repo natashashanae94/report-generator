@@ -13,7 +13,6 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class DialogBox {
 
-  //Calling API
   pageSpeedData: any;
 
   constructor(private apiService: ApiService, private firestore: Firestore) { }
@@ -38,13 +37,7 @@ export class DialogBox {
           const colRef = collection(this.firestore, 'posts');
           const docRef = await addDoc(colRef, pagespeedData);
           console.log('Document written with ID:', docRef.id);
-          // console.log({
-          //   performanceData: pagespeedData,
-
-          //   //Uncomment this statement to see the whole request JSON from API
-          //   /* request: data*/
-          // });
-
+          
         } catch (error) {
           console.error('Firestore write error:', error);
         }

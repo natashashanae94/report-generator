@@ -43,19 +43,21 @@ export class AppComponent {
     this.dialog.open(DialogBox)
   }
 
+  //Write a query here1   
+ 
   //Example report type values for Select Dropdown component (I plan to replace these with API values).
   insights: Insight[] = [
-    {value: 'lcp-0', viewValue: 'Largest Contentful Paint'},
-    {value: 'fcp-1', viewValue: 'First Contentful Paint'},
-    {value: 'cls-2', viewValue: 'Cumulative Layout Shift'},
-    {value: 'performance-3', viewValue: 'Performance'},
-    {value: 'accessibility-4', viewValue: 'Accessibility'},
-    {value: 'best-practice-5', viewValue: 'Best Practice'},
-    {value: 'seo-6', viewValue: 'SEO'},
-    {value: 'speed-index-7', viewValue: 'Speed Index'},
-    {value: 'tbt-8', viewValue: 'Total Blocking Time'},
-    {value: 'transfer-size-9', viewValue: 'Page Transfer Size'},
-    {value: 'num-requests-10', viewValue: 'Number of Requests'},
+    // {value: 'lcp-0', viewValue: 'Largest Contentful Paint'},
+    // {value: 'fcp-1', viewValue: 'First Contentful Paint'},
+    // {value: 'cls-2', viewValue: 'Cumulative Layout Shift'},
+    // {value: 'performance-3', viewValue: 'Performance'},
+    // {value: 'accessibility-4', viewValue: 'Accessibility'},
+    // {value: 'best-practice-5', viewValue: 'Best Practice'},
+    // {value: 'seo-6', viewValue: 'SEO'},
+    // {value: 'speed-index-7', viewValue: 'Speed Index'},
+    // {value: 'tbt-8', viewValue: 'Total Blocking Time'},
+    // {value: 'transfer-size-9', viewValue: 'Page Transfer Size'},
+    // {value: 'num-requests-10', viewValue: 'Number of Requests'},
   ];
 
   //Example generated report values for Select Dropdown component (I plan to replace these with API values).

@@ -20,13 +20,15 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  //Retrieves pagespeed data from api to be stored into firebase.
   getPageSpeedData(url: string): Observable<any> {
     const params = new HttpParams()
       .set('url', url)
       .set('key', this.apiKey);
 
     return this.http.get(this.apiUrl, { params });
-    
   }
 
+  //Gets selected metrics from firestore to be displayed in select dropdown.
+  getSelectedMetrics()
 }
